@@ -12,8 +12,7 @@ func (d *Duration) UnmarshalJSON(b []byte) error {
 	if err := json.Unmarshal(b, &n); err != nil {
 		return err
 	}
-	// BUG: treat number as nanoseconds
-	*d = Duration(time.Duration(n))
+	*d = Duration(time.Duration(n) * time.Second)
 	return nil
 }
 
